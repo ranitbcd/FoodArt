@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+<link href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" rel="Stylesheet"></link>
+<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js" ></script>
+<style>
+    body{
+    background-color: beige;
+}
+#SearcName{
+    width: 175px;
+    border: 1px solid black;
+    background-color: burlywood;
+    position: relative;
+}
+
+</style>
+</head>
+
+<body>
+    <form class="form-inline ml-auto">
+        <input type="text" class="form-control mr-sm-2" id="SearcName" placeholder="Search">
+       
+    </form>
+    <h1>Uploaded Images</h1>
+    <div>
+        <% data.forEach(function(doc) { %>
+        <div>
+            <div>
+                <img src="images/<%=doc.image%>">
+                <div>
+                    <h5><%= doc.iname %></h5>
+                     <p><%= doc.price %></p>
+                </div>
+            </div>
+        </div>
+        <% }) %>
+    </div>
+    <script>
+        $(function(){
+            $('#SearcName').autocomplete({
+                source: function(req,res){
+                    $.ajax({
+                        url:"autocomplete/",
+                        dataType:"jsonp",
+                        type:"GET",
+                        data:req,
+                        success: (data)=>{
+                            res(data)
+                            console.log(data)
+                        },
+                        error: (err)=>{
+                            console.log(err,status);
+                        }
+                         
+                    });
+                },
+                minLength:1,
+                select : (event,ui)=>{
+                    if(ui.items){
+                        $('#SearcName').text(ui.item.label); 
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

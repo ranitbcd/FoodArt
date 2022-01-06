@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/style2.css">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+<body>
+  <div class="container">
+    <div class="title">Register Item Details</div>
+    <div class="content">
+      <form action="/items" method="post" enctype="multipart/form-data">
+        <div class="user-details">
+          <div class="input-box">
+            <span class="details">ItemCode</span>
+            <input type="text" placeholder="Enter item code" name="icode" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Item Name</span>
+            <input type="text" placeholder="Enter Item Name" name="iname" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Category</span>
+            <input type="text" placeholder="Enter category" name="category" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Price</span>
+            <input type="text" placeholder="Enter price" name="price" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Image</span>
+            <input type="file" placeholder="Upload Picture" name="image" required>
+          </div>
+          
+        </div>
+        <div class="button">
+          <input type="submit" name="b1" value="Save Details">
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-10 offset-sm-2 text-success">
+                <%=msg%>
+            </div>
+      </form>
+    </div>
+
+  </div>
+
+</body>
+</html>
